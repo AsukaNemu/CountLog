@@ -23,6 +23,7 @@ def count_logs(log_file_path):
         "UNKNOWN": 0  # 未识别的日志级别
     }
     ip_count = {}  # 统计IP访问频次，key=IP，value=次数
+    line_num = 0
 
     try:
         # 打开日志文件，使用utf-8编码（避免中文乱码），errors='ignore'忽略无法解码的字符
@@ -73,7 +74,7 @@ def count_logs(log_file_path):
         result = {
             "log_level": log_level_count,
             "ip_count": ip_count,
-            "total_lines": line_num  # 日志总行数（含空行已跳过）
+            "total_lines": line_num  # 文件总行数；空行不计入级别和 IP 统计
         }
         return result
 
